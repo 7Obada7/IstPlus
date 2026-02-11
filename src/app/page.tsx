@@ -1,65 +1,126 @@
-import Image from "next/image";
+"use client";
+
+// Direct import for SVG/CSS component is fine, or dynamic with ssr: true if beneficial
+// But simple components are better standard imported to avoid flicker
+import { ParallaxMountainScene } from "@/components/ParallaxMountainScene";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    return (
+        <div className="flex flex-col min-h-screen">
+            {/* Hero Section */}
+            <section className="relative h-[600px] w-full overflow-hidden">
+                <div className="absolute inset-0 z-0 bg-[#87CEEB]">
+                    <ParallaxMountainScene />
+                </div>
+
+                {/* Overlay for text readability */}
+                <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/30 via-transparent to-background/90" />
+
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
+                    <motion.h1
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="text-5xl md:text-7xl font-bold text-white mb-6 font-serif tracking-wide drop-shadow-md"
+                    >
+                        Discover the <span className="text-primary-foreground">Extraordinary</span>
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                        className="text-lg md:text-xl text-white max-w-2xl mb-8 drop-shadow-md font-medium"
+                    >
+                        Your gateway to premium travel experiences. We craft unforgettable journeys for the discerning traveler.
+                    </motion.p>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+                        className="flex gap-4 pointer-events-auto"
+                    >
+                        <Link href="/reservations">
+                            <Button variant="premium" size="lg" className="text-lg px-8 shadow-lg">
+                                Start Your Journey
+                            </Button>
+                        </Link>
+                        <Link href="/about">
+                            <Button variant="outline" size="lg" className="text-lg px-8 bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-lg">
+                                Learn More
+                            </Button>
+                        </Link>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* Services / About Teaser */}
+            <section className="py-20 bg-background">
+                <div className="container mx-auto px-4">
+                    <div className="text-center mb-16">
+                        <motion.h2
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="text-3xl md:text-4xl font-bold mb-4 font-serif"
+                        >
+                            Why Choose IstPlus?
+                        </motion.h2>
+                        <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: 96 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            className="h-1 bg-primary mx-auto"
+                        />
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                            className="mt-4 text-muted-foreground max-w-2xl mx-auto"
+                        >
+                            We define excellence in tourism with our comprehensive services and attention to detail.
+                        </motion.p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            {
+                                title: "Global Destinations",
+                                description: "Access to exclusive resorts and hidden gems worldwide.",
+                                icon: "🌍"
+                            },
+                            {
+                                title: "Premium Flights",
+                                description: "Luxury air travel arrangements with top-tier airlines.",
+                                icon: "✈️"
+                            },
+                            {
+                                title: "24/7 Support",
+                                description: "Dedicated concierge service throughout your journey.",
+                                icon: "🛎️"
+                            }
+                        ].map((service, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                                className="bg-card border border-border/50 p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-primary/50 group"
+                            >
+                                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+                                <h3 className="text-xl font-bold mb-2">{service.title}</h3>
+                                <p className="text-muted-foreground">{service.description}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+    );
 }

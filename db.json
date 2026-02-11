@@ -1,0 +1,25 @@
+{
+  "reservations": [
+    {
+      "id": 1768956121498,
+      "destination": "paris",
+      "fullName": "d",
+      "email": "ssd@gmail.com",
+      "date": "2026-01-29",
+      "passengers": 1,
+      "message": "d",
+      "createdAt": "2026-01-21T00:42:01.498Z"
+    },
+    {
+      "id": 1770597170333,
+      "destination": "paris",
+      "fullName": "obama masri",
+      "email": "obama1413@gmail.com",
+      "date": "2026-02-21",
+      "passengers": 2,
+      "message": "none",
+      "createdAt": "2026-02-09T00:32:50.333Z"
+    }
+  ],
+  "flights": []
+}

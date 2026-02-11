@@ -1,0 +1,46 @@
+
+> ist-plus-tourism@0.1.0 dev
+> next dev
+
+⚠ `eslint` configuration in next.config.ts is no longer supported. See more info here: https://nextjs.org/docs/app/api-reference/cli/next#next-lint-options
+⚠ Invalid next.config.ts options detected: 
+⚠     Unrecognized key(s) in object: 'eslint', 'swcMinify'
+⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+▲ Next.js 16.1.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.41:3000
+
+✓ Starting...
+✓ Ready in 858ms
+Error: Cannot apply unknown utility class `border-border`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [2m[at onInvalidCandidate (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:21:1314)][0m
+    [2m[at Te (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:16:36652)][0m
+    [2m[at C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:21:355][0m
+    [2m[at Rr (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:3:1718)][0m
+    [2m[at _ (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:3:1377)][0m
+    [2m[at $e (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:21:172)][0m
+    [2m[at un (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:38:294)][0m
+    [2m[at process.processTicksAndRejections (node:internal/process/task_queues:105:5)][0m
+    [2m[at async cn (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\tailwindcss\dist\lib.js:38:631)][0m
+    [2m[at async Xr (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\@tailwindcss\node\dist\index.js:10:3417)][0m
+⨯ ./src/app/globals.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\src\app\globals.css:1:1: Cannot apply unknown utility class `border-border`. Are you using CSS modules or similar and missing `@reference`? https://tailwindcss.com/docs/functions-and-directives#reference-directive
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (C:\Users\obama\.gemini\antigravity\scratch\ist-plus-tourism\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at process.processTicksAndRejections (node:internal/process/task_queues:105:5)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./src/app/globals.css [Client Component Browser]
+    ./src/app/layout.tsx [Server Component]
+
+
+ GET / 500 in 1064ms (compile: 811ms, render: 253ms)
+Terminate batch job (Y/N)? [?25h
+
+^C
