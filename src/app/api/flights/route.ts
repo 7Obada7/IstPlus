@@ -1,6 +1,8 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
+export const dynamic = 'force-dynamic';
+
 export async function GET() {
     try {
         const allFlights = await db.flights.findMany();
@@ -13,14 +15,15 @@ export async function GET() {
 export async function POST(req: Request) {
     try {
         const body = await req.json();
-        const { origin, destination, price, departureTime, airline } = body;
+        const { origin, destination, price, departureTime, airline, passengers } = body;
 
         await db.flights.create({
-            origin,
-            destination,
+            from: origin,
+            to: destination,
             price: Number(price),
-            departureTime,
+            date: departureTime,
             airline,
+            passengers: Number(passengers || 0),
         });
 
         return NextResponse.json({ success: true });
