@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function GET() {
     try {
@@ -18,16 +18,19 @@ export async function POST(req: Request) {
         const { origin, destination, price, departureTime, airline, passengers } = body;
 
         await db.flights.create({
-            from: origin,
-            to: destination,
-            price: Number(price),
-            date: departureTime,
-            airline,
-            passengers: Number(passengers || 0),
+            data: {
+                from: origin,
+                to: destination,
+                price: Number(price),
+                date: departureTime,
+                airline,
+                passengers: Number(passengers || 0),
+            }
         });
 
         return NextResponse.json({ success: true });
     } catch (error) {
+        console.error(error);
         return NextResponse.json({ success: false, error: "Failed to create flight" }, { status: 500 });
     }
 }
