@@ -18,7 +18,7 @@ export function Logo({ className }: LogoProps) {
                 />
             </div>
             <span className="text-xl font-bold tracking-tight text-foreground">
-                IST<span className="text-primary">PLUS</span>
+                IST<span style={{ background: "linear-gradient(180deg, #e8e8e8 0%, #a8a8a8 40%, #d0d0d0 60%, #888 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", filter: "drop-shadow(0 0 2px rgba(200,200,200,0.4))" }}>PLUS</span>
             </span>
         </Link>
     );

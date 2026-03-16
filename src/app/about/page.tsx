@@ -4,8 +4,11 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Star, Shield, Users } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AboutPage() {
+    const { t } = useLanguage();
+
     return (
         <div className="flex flex-col min-h-screen bg-background">
             {/* Hero Section */}
@@ -18,7 +21,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.8 }}
                         className="text-4xl md:text-6xl font-bold text-white font-serif mb-4"
                     >
-                        Our Story
+                        {t("about.hero_title")}
                     </motion.h1>
                     <motion.p 
                         initial={{ opacity: 0, y: 20 }}
@@ -26,7 +29,7 @@ export default function AboutPage() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto"
                     >
-                        Redefining the art of travel through meticulous planning and unparalleled service.
+                        {t("about.hero_subtitle")}
                     </motion.p>
                 </div>
             </section>
@@ -42,17 +45,23 @@ export default function AboutPage() {
                             transition={{ duration: 0.8 }}
                         >
                             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif text-foreground">
-                                We Are <span className="text-primary">IstPlus Tourism</span>
+                                {t("about.mission_title_1")} <span className="text-primary">{t("about.mission_title_2")}</span>
                             </h2>
                             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                                Founded with a passion for excellence, IstPlus Tourism has established itself as a premier provider of luxury travel experiences. We believe that travel is not just about moving from one place to another, but about the moments, the discoveries, and the memories created along the way.
+                                {t("about.mission_p1")}
                             </p>
                             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                                Our team of dedicated concierges and travel experts work tirelessly to ensure that every aspect of your journey is flawless, from the moment you step out your door until you return home.
+                                {t("about.mission_p2")}
                             </p>
+                            <div className="mt-8">
+                                <h3 className="text-xl font-bold mb-4">{t("about.contact_title")}</h3>
+                                <p className="text-muted-foreground mb-2">{t("about.address")}</p>
+                                <p className="text-muted-foreground mb-2">{t("about.phone")}</p>
+                                <p className="text-muted-foreground mb-2">{t("about.email")}</p>
+                            </div>
                             <Link href="/services">
-                                <Button variant="outline" className="gap-2">
-                                    Explore Our Services <ArrowRight className="w-4 h-4" />
+                                <Button variant="outline" className="gap-2 mt-6">
+                                    {t("about.explore_btn")} <ArrowRight className="w-4 h-4" />
                                 </Button>
                             </Link>
                         </motion.div>
@@ -71,8 +80,8 @@ export default function AboutPage() {
                                 />
                             </div>
                             <div className="absolute -bottom-6 -left-6 bg-card p-6 rounded-xl shadow-lg border border-border/50 max-w-xs hidden md:block">
-                                <p className="text-primary text-4xl font-bold font-serif mb-1">10+</p>
-                                <p className="text-sm text-foreground font-medium">Years of Excellence in Luxury Tourism</p>
+                                <p className="text-primary text-4xl font-bold font-serif mb-1">{t("about.years_title")}</p>
+                                <p className="text-sm text-foreground font-medium">{t("about.years_desc")}</p>
                             </div>
                         </motion.div>
                     </div>

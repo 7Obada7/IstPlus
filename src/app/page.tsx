@@ -6,8 +6,11 @@ import { ParallaxMountainScene } from "@/components/ParallaxMountainScene";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Home() {
+    const { t } = useLanguage();
+
     return (
         <div className="flex flex-col min-h-screen">
             {/* Hero Section */}
@@ -26,7 +29,7 @@ export default function Home() {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="text-5xl md:text-7xl font-bold text-white mb-6 font-serif tracking-wide drop-shadow-md"
                     >
-                        Discover the <span className="text-primary-foreground">Extraordinary</span>
+                        {t("home.hero_title_1")} <span className="text-primary-foreground">{t("home.hero_title_2")}</span>
                     </motion.h1>
                     <motion.p
                         initial={{ opacity: 0, y: 30 }}
@@ -34,7 +37,7 @@ export default function Home() {
                         transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                         className="text-lg md:text-xl text-white max-w-2xl mb-8 drop-shadow-md font-medium"
                     >
-                        Your gateway to premium travel experiences. We craft unforgettable journeys for the discerning traveler.
+                        {t("home.hero_subtitle")}
                     </motion.p>
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -44,12 +47,12 @@ export default function Home() {
                     >
                         <Link href="/reservations">
                             <Button variant="premium" size="lg" className="text-lg px-8 shadow-lg">
-                                Start Your Journey
+                                {t("home.start_journey")}
                             </Button>
                         </Link>
                         <Link href="/about">
                             <Button variant="outline" size="lg" className="text-lg px-8 bg-white/10 backdrop-blur-sm text-white border-white hover:bg-white hover:text-black hover:border-white transition-all duration-300 shadow-lg">
-                                Learn More
+                                {t("home.learn_more")}
                             </Button>
                         </Link>
                     </motion.div>
@@ -67,7 +70,7 @@ export default function Home() {
                             transition={{ duration: 0.6 }}
                             className="text-3xl md:text-4xl font-bold mb-4 font-serif"
                         >
-                            Why Choose IstPlus?
+                            {t("home.why_choose_title")}
                         </motion.h2>
                         <motion.div
                             initial={{ width: 0 }}
@@ -83,25 +86,25 @@ export default function Home() {
                             transition={{ duration: 0.8, delay: 0.4 }}
                             className="mt-4 text-muted-foreground max-w-2xl mx-auto"
                         >
-                            We define excellence in tourism with our comprehensive services and attention to detail.
+                            {t("home.why_choose_subtitle")}
                         </motion.p>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
                             {
-                                title: "Global Destinations",
-                                description: "Access to exclusive resorts and hidden gems worldwide.",
+                                title: t("home.feature_1_title"),
+                                description: t("home.feature_1_desc"),
                                 icon: "🌍"
                             },
                             {
-                                title: "Premium Flights",
-                                description: "Luxury air travel arrangements with top-tier airlines.",
+                                title: t("home.feature_2_title"),
+                                description: t("home.feature_2_desc"),
                                 icon: "✈️"
                             },
                             {
-                                title: "24/7 Support",
-                                description: "Dedicated concierge service throughout your journey.",
+                                title: t("home.feature_3_title"),
+                                description: t("home.feature_3_desc"),
                                 icon: "🛎️"
                             }
                         ].map((service, index) => (
